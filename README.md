@@ -8,11 +8,9 @@ Six-Samurai Counter initially was an app to help all Yu-Gi-Oh players who use de
 Now is a complete multi-use app for all players.
 
 ## Usage
-    - Counters List: Keep all the counts of your cards
-    - Roll Dice: Roll the dice and hope to start first!
-    - Life Points calculator: you can keep track of your and your opponent's LP
-
----
+- Counters List: Keep all the counts of your cards
+- Roll Dice: Roll the dice and hope to start first!
+- Life Points calculator: you can keep track of your and your opponent's LP
 
 ## License
 

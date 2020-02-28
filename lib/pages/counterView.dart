@@ -109,7 +109,7 @@ class _CounterListViewState extends State<CounterListView> {
                 padding: const EdgeInsets.all(0.0)
             ),
             new ListTile(
-                title: Text("Life Points"),
+                title: Text("Life Points Calculator"),
                 trailing: Icon(Icons.dialpad),
                 //enabled: false
               onTap:(){
@@ -118,14 +118,14 @@ class _CounterListViewState extends State<CounterListView> {
               }
             ),
             new ListTile(
-                title: Text("Dado"),
+                title: Text("Roll Dice"),
                 trailing: Icon(Icons.casino),
                 onTap:(){
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '/dice');}
             ),
             new ListTile(
-              title: Text("Informazioni su Six-Samurai Counter"),
+              title: Text("About Six-Samurai Counter"),
               trailing: Icon(Icons.info),
               onTap: (){
                 Navigator.pop(context);
