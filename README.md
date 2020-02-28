@@ -1,4 +1,5 @@
 # Six-Samurai Counter
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 A multi-use app for Yu-Gi-Oh players, especially for six samurai player
 
