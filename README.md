@@ -2,10 +2,10 @@
 
 A multi-use app for Yu-Gi-Oh players, especially for six samurai player
 
-## What is it
+## What it is
 
 Six-Samurai Counter initially was an app to help all Yu-Gi-Oh players who use decks that need counters.
-Now is a complete multi-use app for all players.
+Now is a complete multi-use app for all Yu-Gi-Oh players.
 
 ## Usage
 - Counters List: Keep all the counts of your cards
