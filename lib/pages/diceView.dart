@@ -17,7 +17,7 @@ class _DiceViewState extends State<DiceView>{
         ),
         body: Center(
           child: GestureDetector(
-            child:Image.asset('assets/images/Dice/Dice-$_diceNumber.png'),
+            child:Image.asset('assets/images/Dice/Dice-$_diceNumber.png', scale: 3),
             onTap: (){
               setState(() {
                 _diceNumber= Random().nextInt(6)+1;
