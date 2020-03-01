@@ -64,10 +64,10 @@ class _LifePointsViewState extends State<LifePointsView> {
     });
   }
 
-  Widget buildButton(String buttonText, double buttonHeight, Color buttonColor,
+  Widget buildButton(String buttonText, Color buttonColor,
       Color textColor) {
     return Container(
-        height: MediaQuery.of(context).size.height * 0.1 * buttonHeight,
+        height: MediaQuery.of(context).size.height * 0.1,
         color: buttonColor,
         child: FlatButton(
           shape: RoundedRectangleBorder(
@@ -75,7 +75,7 @@ class _LifePointsViewState extends State<LifePointsView> {
             side: BorderSide(
                 color: buttonColor, width: 1, style: BorderStyle.solid),
           ),
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(15.0),
           onPressed: () => buttonPressed(buttonText),
           child: Text(buttonText,
               style: TextStyle(
@@ -115,7 +115,7 @@ class _LifePointsViewState extends State<LifePointsView> {
             behavior: HitTestBehavior.translucent,
             child: Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.fromLTRB(10, 30, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
               child: Text(_playerData[1].getValue(),
                   style: TextStyle(fontSize: _fontPlayer2)),
             )),
@@ -129,36 +129,36 @@ class _LifePointsViewState extends State<LifePointsView> {
                 children: [
                   TableRow(
                     children: [
-                      buildButton("(", 1, Colors.white10, Colors.black),
-                      buildButton(")", 1, Colors.white10, Colors.black),
-                      buildButton("÷", 1, Colors.white10, Colors.black),
+                      buildButton("(", Colors.white10, Colors.black),
+                      buildButton(")", Colors.white10, Colors.black),
+                      buildButton("÷", Colors.white10, Colors.black),
                     ],
                   ),
                   TableRow(
                     children: [
-                      buildButton("7", 1, Colors.white, Colors.black),
-                      buildButton("8", 1, Colors.white, Colors.black),
-                      buildButton("9", 1, Colors.white, Colors.black),
+                      buildButton("7", Colors.white, Colors.black),
+                      buildButton("8", Colors.white, Colors.black),
+                      buildButton("9", Colors.white, Colors.black),
                     ],
                   ),
                   TableRow(
                     children: [
-                      buildButton("4", 1, Colors.white, Colors.black),
-                      buildButton("5", 1, Colors.white, Colors.black),
-                      buildButton("6", 1, Colors.white, Colors.black),
+                      buildButton("4", Colors.white, Colors.black),
+                      buildButton("5", Colors.white, Colors.black),
+                      buildButton("6", Colors.white, Colors.black),
                     ],
                   ),
                   TableRow(
                     children: [
-                      buildButton("1", 1, Colors.white, Colors.black),
-                      buildButton("2", 1, Colors.white, Colors.black),
-                      buildButton("3", 1, Colors.white, Colors.black),
+                      buildButton("1", Colors.white, Colors.black),
+                      buildButton("2", Colors.white, Colors.black),
+                      buildButton("3", Colors.white, Colors.black),
                     ],
                   ),
                   TableRow(
                     children: [
-                      buildButton("00", 1, Colors.white, Colors.black),
-                      buildButton("0", 1, Colors.white, Colors.black),
+                      buildButton("00", Colors.white, Colors.black),
+                      buildButton("0", Colors.white, Colors.black),
                       GestureDetector(
                           onLongPress: () {
                             setState(() {
@@ -166,7 +166,7 @@ class _LifePointsViewState extends State<LifePointsView> {
                             });
                           },
                           child:
-                              buildButton("CE", 1, Colors.white, Colors.black)),
+                              buildButton("CE", Colors.white, Colors.black)),
                     ],
                   ),
                 ],
@@ -176,19 +176,19 @@ class _LifePointsViewState extends State<LifePointsView> {
                 width: MediaQuery.of(context).size.width * 0.25,
                 child: Table(children: [
                   TableRow(children: [
-                    buildButton("⤿", 1, Colors.white10, Colors.black),
+                    buildButton("⤿", Colors.white10, Colors.black),
                   ]),
                   TableRow(children: [
-                    buildButton("×", 1, Colors.white10, Colors.black),
+                    buildButton("×", Colors.white10, Colors.black),
                   ]),
                   TableRow(children: [
-                    buildButton("-", 1, Colors.white10, Colors.black),
+                    buildButton("-", Colors.white10, Colors.black),
                   ]),
                   TableRow(children: [
-                    buildButton("+", 1, Colors.white10, Colors.black),
+                    buildButton("+", Colors.white10, Colors.black),
                   ]),
                   TableRow(children: [
-                    buildButton("=", 1, Colors.blue, Colors.white),
+                    buildButton("=", Colors.blue, Colors.white),
                   ]),
                 ]))
           ],

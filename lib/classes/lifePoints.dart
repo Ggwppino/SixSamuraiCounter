@@ -48,7 +48,7 @@ class LifePoints {
   }
 
   sub() {
-    if (!_compareParseOpenParenthesis() && this._value.length < 45) {
+    if (this._value.length < 45) {
       if(_compareParseSign()) delete();
       this._value += '-';
     }
@@ -193,6 +193,7 @@ class LifePoints {
           .toString()
           .split('');
     } else if (temp.contains('-')) {
+      if(temp[0]=='-') return int.parse(temp).toString().split('');
       List<String> array = temp.replaceFirst('-', '&').split('&');
       return (int.parse(_solution(array[0].split('')).join()) -
               int.parse(_solution(array[1].split('')).join()))
