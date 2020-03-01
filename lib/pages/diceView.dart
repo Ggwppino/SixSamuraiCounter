@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class DiceView extends StatefulWidget{
@@ -17,10 +18,11 @@ class _DiceViewState extends State<DiceView>{
         ),
         body: Center(
           child: GestureDetector(
-            child:Image.asset('assets/images/Dice/Dice-$_diceNumber.png', scale: 3),
+            child:Image.asset('assets/images/Dice/Dice-$_diceNumber.png', scale: 4),
             onTap: (){
               setState(() {
                 _diceNumber= Random().nextInt(6)+1;
+                HapticFeedback.lightImpact();
               });
             },
           ),

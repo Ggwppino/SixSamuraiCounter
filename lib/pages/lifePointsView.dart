@@ -18,6 +18,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:six_samurai_counter_app/classes/lifePoints.dart';
 
 import 'counterView.dart';
@@ -163,6 +164,7 @@ class _LifePointsViewState extends State<LifePointsView> {
                           onLongPress: () {
                             setState(() {
                               _playerData[_currentPlayer].deleteAll();
+                              HapticFeedback.lightImpact();
                             });
                           },
                           child:
