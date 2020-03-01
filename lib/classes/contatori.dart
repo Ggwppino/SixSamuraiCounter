@@ -4,7 +4,7 @@ class Contatori {
   int _add;
 
   counterSub() {
-    _counter--;
+    if(this._counter !=0)_counter--;
   }
 
   counterAdd() {
