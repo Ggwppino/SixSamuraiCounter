@@ -16,32 +16,42 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:package_info/package_info.dart';
 
-class InfoView extends StatefulWidget{
-  _InfoViewState createState()=> _InfoViewState();
+class InfoView extends StatefulWidget {
+  _InfoViewState createState() => _InfoViewState();
 }
 
-class _InfoViewState extends State<InfoView>{
+class _InfoViewState extends State<InfoView> {
+  String _version = '';
+
+  initState() {
+    super.initState();
+    getVersion();
+  }
+
+  getVersion() async{
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _version = packageInfo.version;
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("About"),
       ),
-      body: Center(
-        child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(20.0),
-            children: [
-              Center(child:Text("Six-Samurai Counter, V1.0.0")),
-              Center(child:Text("Copyright(C) 2020 Ggwppino"))
-            ]
-        ) ,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(child: Text("Six-Samurai Counter, v$_version")),
+          Center(child: Text("Copyright(C) 2020 Ggwppino"))
+        ],
       ),
-
     );
-
   }
 }
