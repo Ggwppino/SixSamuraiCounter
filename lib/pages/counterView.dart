@@ -30,6 +30,7 @@ class Data {
 }
 
 class CounterListView extends StatefulWidget {
+  CounterListView();
   _CounterListViewState createState() => _CounterListViewState();
 }
 

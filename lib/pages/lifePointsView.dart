@@ -99,7 +99,7 @@ class _LifePointsViewState extends State<LifePointsView> {
             behavior: HitTestBehavior.translucent,
             child: Container(
               alignment: Alignment.centerRight,
-              padding: EdgeInsets.fromLTRB(10, 30, 10, 10),
+              padding: EdgeInsets.fromLTRB(10, 40, 10, 10),
               child: Text(_playerData[0].getValue(),
                   style: TextStyle(fontSize: _fontPlayer1)),
             )),
