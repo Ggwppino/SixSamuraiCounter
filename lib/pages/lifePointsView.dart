@@ -162,9 +162,9 @@ class _LifePointsViewState extends State<LifePointsView> {
                       buildButton("0", Colors.white, Colors.black),
                       GestureDetector(
                           onLongPress: () {
+                            HapticFeedback.lightImpact();
                             setState(() {
                               _playerData[_currentPlayer].deleteAll();
-                              HapticFeedback.lightImpact();
                             });
                           },
                           child:

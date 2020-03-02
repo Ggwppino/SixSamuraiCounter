@@ -42,35 +42,40 @@ class LifePoints {
 
   add() {
     if (!_compareParseOpenParenthesis() && this._value.length < 45) {
-      if(_compareParseSign()) delete();
+      if (_compareParseSign())
+        if(_value[_value.length-2]=='(') return;
+        else delete();
       this._value += '+';
     }
   }
 
   sub() {
     if (this._value.length < 45) {
-      if(_compareParseSign()) delete();
+      if (_compareParseSign()) delete();
       this._value += '-';
     }
   }
 
   div() {
-    if (!_compareParseOpenParenthesis() && this._value.length < 45){
-      if(_compareParseSign()) delete();
+    if (!_compareParseOpenParenthesis() && this._value.length < 45) {
+      if (_compareParseSign())
+        if(_value[_value.length-2]=='(') return;
+        else delete();
       this._value += '÷';
     }
   }
 
   mul() {
-    if (!_compareParseOpenParenthesis() && this._value.length < 45){
-      if(_compareParseSign()) delete();
+    if (!_compareParseOpenParenthesis() && this._value.length < 45) {
+      if (_compareParseSign())
+        if(_value[_value.length-2]=='(') return;
+        else delete();
       this._value += '×';
     }
   }
 
   insertNumber(int number) {
-    if (this._value.length < 46)
-      if (number != 0 ||
+    if (this._value.length < 46) if (number != 0 ||
         this._value.codeUnitAt(this._value.length - 1) != '÷'.codeUnitAt(0)) {
       if (this._value == '0')
         this._value = number.toString();
@@ -87,15 +92,18 @@ class LifePoints {
   }
 
   openParenthesis() {
-    if(this._value.length<45) {
-      if (_compareParseNumber() || _compareParseCloseParenthesis()) this._value += '×';
+    if (this._value.length < 45) {
+      if (_compareParseNumber() || _compareParseCloseParenthesis())
+        this._value += '×';
       this._value += '(';
       this._countParentheses++;
     }
   }
 
   closeParenthesis() {
-    if (!_compareParseSign() && !_compareParseOpenParenthesis() && this._value.length<46) {
+    if (!_compareParseSign() &&
+        !_compareParseOpenParenthesis() &&
+        this._value.length < 46) {
       this._value += ')';
       this._countParentheses--;
     }
@@ -174,7 +182,6 @@ class LifePoints {
       this._value = temp;
   }
 
-
   //sub exp with '(' and ')'
   List<String> _procedure(List<String> stack) {
     List<String> stackAppoggio = new List<String>();
@@ -192,8 +199,21 @@ class LifePoints {
               int.parse(_solution(array[1].split('')).join()))
           .toString()
           .split('');
+    } else if(temp.contains('÷-')){
+      List<String> array = temp.replaceFirst('÷', '&').split('&');
+      double tmpDouble1 = double.parse(_solution(array[0].split('')).join());
+      print(tmpDouble1);
+      double tmpDouble2 = double.parse(array[1]);
+      print(tmpDouble2);
+      return (tmpDouble1 / tmpDouble2).ceil().toString().split('');
+    } else if(temp.contains('×-')){
+      List<String> array = temp.replaceFirst('×', '&').split('&');
+      return (int.parse(_solution(array[0].split('')).join()) *
+          int.parse(_solution(array[1].split('')).join()))
+          .toString()
+          .split('');
     } else if (temp.contains('-')) {
-      if(temp[0]=='-') return int.parse(temp).toString().split('');
+      if (temp[0] == '-') return int.parse(temp).toString().split('');
       List<String> array = temp.replaceFirst('-', '&').split('&');
       return (int.parse(_solution(array[0].split('')).join()) -
               int.parse(_solution(array[1].split('')).join()))
@@ -208,7 +228,9 @@ class LifePoints {
     } else if (temp.contains('÷')) {
       List<String> array = temp.replaceFirst('÷', '&').split('&');
       double tmpDouble1 = double.parse(_solution(array[0].split('')).join());
-      double tmpDouble2 = double.parse(_solution(array[1].split('')).join());
+      print(tmpDouble1);
+      double tmpDouble2 = double.parse(array[1]);
+      print(tmpDouble2);
       return (tmpDouble1 / tmpDouble2).ceil().toString().split('');
     } else
       return temp.split('');
