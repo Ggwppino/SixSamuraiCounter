@@ -126,6 +126,13 @@ class _CounterListViewState extends State<CounterListView> {
                   Navigator.pushNamed(context, '/dice');}
             ),
             new ListTile(
+                title: Text("Coin Toss"),
+                trailing: Icon(Icons.fiber_smart_record),
+                onTap:(){
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/coin');}
+            ),
+            new ListTile(
               title: Text("About Six-Samurai Counter"),
               trailing: Icon(Icons.info),
               onTap: (){

@@ -43,6 +43,7 @@ flutter:
   assets:
     - assets/images/Kizan.png
     - assets/images/Dice/
+    - assets/images/Coin/
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

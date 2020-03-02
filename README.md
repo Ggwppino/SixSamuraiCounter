@@ -11,6 +11,7 @@ Now is a complete multi-use app for all Yu-Gi-Oh players.
 ## Usage
 - Counters List: Keep all the counts of your cards
 - Roll Dice: Roll the dice and hope to start first!
+- Coin Toss: You like living on the edge huh?
 - Life Points calculator: you can keep track of your and your opponent's LP
 
 ## License

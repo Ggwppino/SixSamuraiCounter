@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:six_samurai_counter_app/pages/tossCoinView.dart';
 
 import 'pages/counterView.dart';
 import 'pages/diceView.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/info': (context)=> InfoView(),
         '/dice': (context)=> DiceView(),
         '/lifepoints': (context)=>LifePointsView(),
+        '/coin': (context)=>TossCoinView()
       }
     );
   }
