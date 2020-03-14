@@ -17,6 +17,7 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:six_samurai_counter_app/classes/contatori.dart';
 import 'package:six_samurai_counter_app/classes/lifePoints.dart';
 
@@ -180,6 +181,7 @@ class _CounterListViewState extends State<CounterListView> {
   }
 
   void _addGateway() {
+    HapticFeedback.lightImpact();
     setState(() {
       _listViewData.add(
           new Contatori('GATEWAY CUSTOM ' + _iteratorGateway.toString(), 0, 2, false));
