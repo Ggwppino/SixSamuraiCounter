@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.white,
-    ));
+        systemNavigationBarIconBrightness: Brightness.dark
+      ));
     return MaterialApp(
       title: 'SixSamuraiCounter',
       theme: ThemeData(
