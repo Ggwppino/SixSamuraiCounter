@@ -1,7 +1,7 @@
-# ![icon](./.github/screenshot-README/Icon.png)Six-Samurai Counter
+<img src="./.github/screenshot-README/Icon.png" style="width:50px;height:50px">Six-Samurai Counter
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 A multi-use app for Yu-Gi-Oh players, especially for the six samurai player
-<img src="./.github/screenshot-README/counterlist.png" style="width:50%;"> <img src="./.github/screenshot-README/lifepoints.png" style="width:50%">
+<img src="./.github/screenshot-README/counterlist.png" style="width:100px"> <img src="./.github/screenshot-README/lifepoints.png" style="width:100px">
 ## What it is
 
 Six-Samurai Counter initially was an app to help all Yu-Gi-Oh players who use decks that need counters. <br>
