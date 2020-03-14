@@ -26,62 +26,77 @@ class Data {
   List<LifePoints> player;
 
   Data(this.player);
-
 }
 
 class CounterListView extends StatefulWidget {
   CounterListView();
+
   _CounterListViewState createState() => _CounterListViewState();
 }
 
 class _CounterListViewState extends State<CounterListView> {
-  final List<Contatori> _listViewData = [new Contatori('GATEWAY DUDE', 0, 2)];
+  final List<Contatori> _listViewData = [new Contatori('GATEWAY DUDE', 0, 2, true)];
   final _biggerFont = const TextStyle(fontSize: 18.0);
   int _iteratorCounter = 1;
+  int _iteratorGateway = 1;
   final data = Data([new LifePoints('8000', 0), new LifePoints('8000', 0)]);
-
-
 
   Widget _buildListViewData() {
     return ListView(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.0),
       children:
-      _listViewData.map((data) {
-        return Dismissible(
-          key: Key(data.name),
-          onDismissed: (direction) {
-            // Remove the item from the data source.
-            setState(() {
-              _listViewData.remove(data);
-            });
-          },
-          child: ListTile(
-            title: Text(data.name, style: _biggerFont),
-            trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  IconButton(
-                      icon: Icon(Icons.remove),
-                      onPressed: () {
-                        setState(() {
-                          data.counterSub();
-                        });
-                      }
-                  ),
-                  Text(data.counter.toString()),
-                  IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () {
-                        setState(() {
-                          data.counterAdd();
-                        });
-                      }
-                  )
-                ]
+        _listViewData.map((data) {
+          if(data.defaultGateway)
+            return ListTile(
+              title: Text(data.name, style: _biggerFont),
+              trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {
+                      setState(() {
+                        data.counterSub();
+                      });
+                    }),
+                Text(data.counter.toString()),
+                IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      setState(() {
+                        data.counterAdd();
+                      });
+                    })
+              ]),
+            );
+          else return Dismissible(
+            key: Key(data.name),
+            onDismissed: (direction) {
+              // Remove the item from the data source.
+              setState(() {
+                _listViewData.remove(data);
+              });
+            },
+            child: ListTile(
+              title: Text(data.name, style: _biggerFont),
+              trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {
+                      setState(() {
+                        data.counterSub();
+                      });
+                    }),
+                Text(data.counter.toString()),
+                IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      setState(() {
+                        data.counterAdd();
+                      });
+                    })
+              ]),
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
     );
   }
 
@@ -92,63 +107,84 @@ class _CounterListViewState extends State<CounterListView> {
         ),
         body: _buildListViewData(),
         drawer: DrawerList(context),
-        floatingActionButton: FloatingActionButton(
-            onPressed: _addTile,
-            child: Icon(Icons.add)));
+        floatingActionButton: GestureDetector(
+            onLongPress: _addGateway,
+            child: FloatingActionButton(
+                onPressed: _addTile, child: Icon(Icons.add))));
   }
 
-  Widget DrawerList(BuildContext context){
+  Widget DrawerList(BuildContext context) {
     return Drawer(
         child: ListView(
-          children: <Widget>[
-            DrawerHeader(
-                child: Row(
-                  children:[
-                    Image.asset('assets/images/Kizan.png',fit:BoxFit.fitHeight, scale:0.5, alignment: Alignment.bottomLeft),
-                    Container(child:Text("Six-Samurai Counter",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white)) )], ),
-                decoration: BoxDecoration(color:Colors.blue),
-                padding: const EdgeInsets.all(0.0)
+      children: <Widget>[
+        DrawerHeader(
+            child: Row(
+              children: [
+                Image.asset('assets/images/Kizan.png',
+                    fit: BoxFit.fitHeight,
+                    scale: 0.5,
+                    alignment: Alignment.bottomLeft),
+                Container(
+                    child: Text("Six-Samurai Counter",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.white)))
+              ],
             ),
-            new ListTile(
-                title: Text("Life Points Calculator"),
-                trailing: Icon(Icons.dialpad),
-                //enabled: false
-              onTap:(){
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LifePointsView(data:data)));
-              }
-            ),
-            new ListTile(
-                title: Text("Roll Dice"),
-                trailing: Icon(Icons.casino),
-                onTap:(){
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/dice');}
-            ),
-            new ListTile(
-                title: Text("Coin Toss"),
-                trailing: Icon(Icons.fiber_smart_record),
-                onTap:(){
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/coin');}
-            ),
-            new ListTile(
-              title: Text("About Six-Samurai Counter"),
-              trailing: Icon(Icons.info),
-              onTap: (){
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/info');}
-              ,
-            ),
-          ],
-        ));
+            decoration: BoxDecoration(color: Colors.blue),
+            padding: const EdgeInsets.all(0.0)),
+        new ListTile(
+            title: Text("Life Points Calculator"),
+            trailing: Icon(Icons.dialpad),
+            //enabled: false
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LifePointsView(data: data)));
+            }),
+        new ListTile(
+            title: Text("Roll Dice"),
+            trailing: Icon(Icons.casino),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/dice');
+            }),
+        new ListTile(
+            title: Text("Coin Toss"),
+            trailing: Icon(Icons.fiber_smart_record),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/coin');
+            }),
+        new ListTile(
+          title: Text("About Six-Samurai Counter"),
+          trailing: Icon(Icons.info),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/info');
+          },
+        ),
+      ],
+    ));
   }
 
   void _addTile() {
     setState(() {
-      _listViewData.add(
-          new Contatori('counter ' + _iteratorCounter.toString(), 0, 1));
+      _listViewData
+          .add(new Contatori('counter ' + _iteratorCounter.toString(), 0, 1, false));
       _iteratorCounter++;
+    });
+  }
+
+  void _addGateway() {
+    setState(() {
+      _listViewData.add(
+          new Contatori('GATEWAY CUSTOM ' + _iteratorGateway.toString(), 0, 2, false));
+      _iteratorGateway++;
+      _listViewData.sort((a, b) => a.compareTo(b));
     });
   }
 }

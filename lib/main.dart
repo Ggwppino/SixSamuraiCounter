@@ -8,6 +8,7 @@ import 'pages/diceView.dart';
 import 'pages/infoView.dart';
 import 'pages/lifePointsView.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -19,6 +20,10 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp
     ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.white,
+    ));
     return MaterialApp(
       title: 'SixSamuraiCounter',
       theme: ThemeData(
